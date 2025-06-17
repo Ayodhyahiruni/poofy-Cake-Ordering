@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Poofy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">🎂 Poofy</h1>
+            <p class="tagline">Handmade with love – Freshly baked cakes from Poofy</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Our Cakes</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="about.html">About Poofy</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you! Reach out to discuss your next sweet celebration</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <h2>Contact Information</h2>
+                    <p>Ready to order or have questions? We're here to help make your celebration extra sweet!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                            <small>Mon-Sat: 9am-7pm | Sun: 10am-5pm</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@poofy.com</p>
+                            <small>We respond within 24 hours</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Sweet Street<br>Your City, State 12345</p>
+                            <small>Pickup available by appointment</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                               Sunday: 10:00 AM - 5:00 PM</p>
+                            <small>Closed on major holidays</small>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/15551234567" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Message us on WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-form-section">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm" action="php/process_contact.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a subject</option>
+                                <option value="Cake Order">Cake Order Inquiry</option>
+                                <option value="Custom Design">Custom Design Request</option>
+                                <option value="Pricing">Pricing Information</option>
+                                <option value="Delivery">Delivery Questions</option>
+                                <option value="General">General Question</option>
+                                <option value="Feedback">Feedback</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2>Follow Us on Social Media</h2>
+            <p>Stay updated with our latest creations and special offers!</p>
+            
+            <div class="social-grid">
+                <div class="social-card">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>See our daily cake creations and behind-the-scenes moments</p>
+                    <a href="#" class="btn btn-outline">@PoofyCakes</a>
+                </div>
+                
+                <div class="social-card">
+                    <i class="fab fa-facebook"></i>
+                    <h3>Facebook</h3>
+                    <p>Join our community and see customer reviews and photos</p>
+                    <a href="#" class="btn btn-outline">Poofy Cakes</a>
+                </div>
+                
+                <div class="social-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Quick and easy way to place orders and ask questions</p>
+                    <a href="https://wa.me/15551234567" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Chat with us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How far in advance should I place my order?</h4>
+                    <p>We recommend placing orders at least 48 hours in advance for standard cakes. Custom designs may require 3-5 days notice.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Do you offer delivery?</h4>
+                    <p>Yes! We offer local delivery within 10 miles for $10. Pickup is always free and available by appointment.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Can you accommodate dietary restrictions?</h4>
+                    <p>Absolutely! We can create gluten-free, sugar-free, and vegan options. Please mention your requirements when ordering.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>What payment methods do you accept?</h4>
+                    <p>We accept cash, all major credit cards, and digital payments. A 50% deposit is required for custom orders over $100.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>How should I store my cake?</h4>
+                    <p>Keep your cake refrigerated and bring to room temperature 30 minutes before serving. Best enjoyed within 2-3 days.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Do you provide cake cutting services?</h4>
+                    <p>For special events, we can provide cake cutting and serving assistance. Please ask about this service when ordering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎂 Poofy</h3>
+                    <p>Handmade cakes with love</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="menu.html">Our Cakes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> hello@poofy.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Your City, State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Poofy. All rights reserved. Made with 💕</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

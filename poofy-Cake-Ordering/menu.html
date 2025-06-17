@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Cakes - Poofy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">🎂 Poofy</h1>
+            <p class="tagline">Handmade with love – Freshly baked cakes from Poofy</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Our Cakes</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="about.html">About Poofy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Delicious Cakes</h1>
+            <p>Discover our handcrafted collection of cakes made with love and the finest ingredients</p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Cakes</button>
+                <button class="filter-btn" data-category="birthday">🎉 Birthday Cakes</button>
+                <button class="filter-btn" data-category="anniversary">💕 Anniversary Cakes</button>
+                <button class="filter-btn" data-category="chocolate">🍫 Chocolate Cakes</button>
+                <button class="filter-btn" data-category="cupcakes">🧁 Cupcakes</button>
+                <button class="filter-btn" data-category="mini">🎂 Mini Cakes</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cakes Menu -->
+    <section class="cakes-menu">
+        <div class="container">
+            <!-- Birthday Cakes -->
+            <div class="category-section" data-category="birthday">
+                <h2 class="category-title">🎉 Birthday Cakes</h2>
+                <div class="cakes-grid">
+                    <div class="cake-card">
+                        <img src="images/rainbow-delight.jpg" alt="Rainbow Delight">
+                        <div class="cake-info">
+                            <h3>Rainbow Delight</h3>
+                            <p class="flavor">Vanilla with rainbow layers</p>
+                            <p class="description">Colorful layered cake perfect for kids birthdays</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">6" - $25</span>
+                                <span class="size-price">8" - $35</span>
+                                <span class="size-price">10" - $50</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="cake-card">
+                        <img src="images/chocolate-overload.jpg" alt="Chocolate Overload">
+                        <div class="cake-info">
+                            <h3>Chocolate Overload</h3>
+                            <p class="flavor">Double chocolate</p>
+                            <p class="description">Moist & Rich chocolate cake with chocolate ganache</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">6" - $30</span>
+                                <span class="size-price">8" - $40</span>
+                                <span class="size-price">10" - $55</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anniversary Cakes -->
+            <div class="category-section" data-category="anniversary">
+                <h2 class="category-title">💕 Anniversary Cakes</h2>
+                <div class="cakes-grid">
+                    <div class="cake-card">
+                        <img src="images/hero-cake.jpg" alt="Ribbon Romance">
+                        <div class="cake-info">
+                            <h3>Ribbon Romance</h3>
+                            <p class="flavor">Red velvet</p>
+                            <p class="description">Elegant cake with fondant ribbons and roses</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">8" - $55</span>
+                                <span class="size-price">10" - $75</span>
+                                <span class="size-price">12" - $95</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chocolate Cakes -->
+            <div class="category-section" data-category="chocolate">
+                <h2 class="category-title">🍫 Chocolate Cakes</h2>
+                <div class="cakes-grid">
+                    <div class="cake-card">
+                        <img src="images/dark-temptation.jpg" alt="Dark Temptation">
+                        <div class="cake-info">
+                            <h3>Dark Temptation</h3>
+                            <p class="flavor">Dark chocolate</p>
+                            <p class="description">Rich dark chocolate with chocolate shavings</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">6" - $28</span>
+                                <span class="size-price">8" - $38</span>
+                                <span class="size-price">10" - $52</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="cake-card">
+                        <img src="images/chocolate-overload.jpg" alt="Chocolate Overload">
+                        <div class="cake-info">
+                            <h3>Chocolate Overload</h3>
+                            <p class="flavor">Double chocolate</p>
+                            <p class="description">Moist & Rich chocolate cake with chocolate ganache</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">6" - $30</span>
+                                <span class="size-price">8" - $40</span>
+                                <span class="size-price">10" - $55</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cupcakes -->
+            <div class="category-section" data-category="cupcakes">
+                <h2 class="category-title">🧁 Cupcakes</h2>
+                <div class="cakes-grid">
+                    <div class="cake-card">
+                        <img src="images/rainbow-delight.jpg" alt="Vanilla Dream Cupcakes">
+                        <div class="cake-info">
+                            <h3>Vanilla Dream Cupcakes</h3>
+                            <p class="flavor">Vanilla</p>
+                            <p class="description">Set of vanilla cupcakes with buttercream frosting</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">12 pack - $18</span>
+                                <span class="size-price">24 pack - $32</span>
+                                <span class="size-price">36 pack - $45</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Cakes -->
+            <div class="category-section" data-category="mini">
+                <h2 class="category-title">🎂 Mini Cakes</h2>
+                <div class="cakes-grid">
+                    <div class="cake-card">
+                        <img src="images/hero-cake.jpg" alt="Mini Celebration">
+                        <div class="cake-info">
+                            <h3>Mini Celebration</h3>
+                            <p class="flavor">Strawberry</p>
+                            <p class="description">Perfect for small gatherings and intimate celebrations</p>
+                            <div class="sizes-prices">
+                                <span class="size-price">4" - $15</span>
+                                <span class="size-price">5" - $20</span>
+                            </div>
+                            <a href="order.html" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Order CTA -->
+    <section class="custom-order-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't See What You're Looking For?</h2>
+                <p>We love creating custom cakes for special occasions! Tell us your vision and we'll make it come to life.</p>
+                <a href="order.html" class="btn btn-secondary">Request Custom Cake</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎂 Poofy</h3>
+                    <p>Handmade cakes with love</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="menu.html">Our Cakes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> hello@poofy.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Your City, State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Poofy. All rights reserved. Made with 💕</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

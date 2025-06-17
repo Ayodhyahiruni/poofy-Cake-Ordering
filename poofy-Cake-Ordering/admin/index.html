@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poofy Admin Panel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-nav button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .admin-nav button:hover,
+        .admin-nav button.active {
+            background-color: var(--accent-color);
+        }
+        
+        .admin-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .admin-table th,
+        .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .admin-table th {
+            background-color: var(--background-light);
+            font-weight: 600;
+        }
+        
+        .status-new { color: #e74c3c; font-weight: bold; }
+        .status-in_progress { color: #f39c12; font-weight: bold; }
+        .status-completed { color: #27ae60; font-weight: bold; }
+        .status-cancelled { color: #95a5a6; font-weight: bold; }
+        
+        .action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .action-btn.delete {
+            background-color: #e74c3c;
+        }
+        
+        .action-btn.delete:hover {
+            background-color: #c0392b;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: var(--background-light);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            color: var(--text-dark);
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-nav {
+                flex-direction: column;
+            }
+            
+            .admin-table {
+                font-size: 0.9em;
+            }
+            
+            .admin-table th,
+            .admin-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🎂 Poofy Admin Panel</h1>
+            <p>Manage your cake business efficiently</p>
+        </div>
+        
+        <div class="admin-nav">
+            <button onclick="showSection('dashboard')" class="active">Dashboard</button>
+            <button onclick="showSection('orders')">Orders & Inquiries</button>
+            <button onclick="showSection('cakes')">Manage Cakes</button>
+            <button onclick="showSection('gallery')">Gallery</button>
+            <button onclick="showSection('settings')">Settings</button>
+            <a href="../index.html" class="btn btn-outline">Back to Website</a>
+        </div>
+        
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="admin-section active">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalOrders">0</h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="newOrders">0</h3>
+                    <p>New Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="completedOrders">0</h3>
+                    <p>Completed Orders</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalCakes">6</h3>
+                    <p>Available Cakes</p>
+                </div>
+            </div>
+            
+            <h3>Recent Orders</h3>
+            <div id="recentOrders">
+                <p>Loading recent orders...</p>
+            </div>
+        </div>
+        
+        <!-- Orders Section -->
+        <div id="orders" class="admin-section">
+            <h2>Orders & Inquiries</h2>
+            <div id="ordersTable">
+                <p>Loading orders...</p>
+            </div>
+        </div>
+        
+        <!-- Cakes Section -->
+        <div id="cakes" class="admin-section">
+            <h2>Manage Cakes</h2>
+            <button onclick="showAddCakeForm()" class="btn btn-primary" style="margin-bottom: 20px;">Add New Cake</button>
+            
+            <div id="addCakeForm" style="display: none; background: var(--background-light); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                <h3>Add New Cake</h3>
+                <form id="cakeForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+                        <div>
+                            <label>Cake Name:</label>
+                            <input type="text" name="name" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Category:</label>
+                            <select name="category_id" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                                <option value="1">Birthday Cakes</option>
+                                <option value="2">Anniversary Cakes</option>
+                                <option value="3">Chocolate Cakes</option>
+                                <option value="4">Cupcakes</option>
+                                <option value="5">Mini Cakes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>Description:</label>
+                        <textarea name="description" rows="3" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label>Flavor:</label>
+                            <input type="text" name="flavor" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Small Price ($):</label>
+                            <input type="number" name="price_small" step="0.01" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Medium Price ($):</label>
+                            <input type="number" name="price_medium" step="0.01" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Large Price ($):</label>
+                            <input type="number" name="price_large" step="0.01" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>
+                            <input type="checkbox" name="is_featured"> Featured Cake
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Cake</button>
+                    <button type="button" onclick="hideAddCakeForm()" class="btn btn-outline">Cancel</button>
+                </form>
+            </div>
+            
+            <div id="cakesTable">
+                <p>Loading cakes...</p>
+            </div>
+        </div>
+        
+        <!-- Gallery Section -->
+        <div id="gallery" class="admin-section">
+            <h2>Gallery Management</h2>
+            <p>Gallery management features would be implemented here, including:</p>
+            <ul>
+                <li>Upload new images</li>
+                <li>Edit image descriptions</li>
+                <li>Set featured images</li>
+                <li>Delete images</li>
+            </ul>
+        </div>
+        
+        <!-- Settings Section -->
+        <div id="settings" class="admin-section">
+            <h2>Settings</h2>
+            <div style="background: var(--background-light); padding: 20px; border-radius: 10px;">
+                <h3>Business Information</h3>
+                <form>
+                    <div style="margin-bottom: 15px;">
+                        <label>Business Name:</label>
+                        <input type="text" value="Poofy" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>Phone Number:</label>
+                        <input type="tel" value="+1 (555) 123-4567" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>Email:</label>
+                        <input type="email" value="hello@poofy.com" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>Address:</label>
+                        <textarea rows="3" style="width: 100%; padding: 8px; margin-top: 5px;">123 Sweet Street
+Your City, State 12345</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Admin panel JavaScript
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.admin-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Load data for the section
+            if (sectionName === 'dashboard') {
+                loadDashboardData();
+            } else if (sectionName === 'orders') {
+                loadOrdersData();
+            } else if (sectionName === 'cakes') {
+                loadCakesData();
+            }
+        }
+        
+        function showAddCakeForm() {
+            document.getElementById('addCakeForm').style.display = 'block';
+        }
+        
+        function hideAddCakeForm() {
+            document.getElementById('addCakeForm').style.display = 'none';
+            document.getElementById('cakeForm').reset();
+        }
+        
+        function loadDashboardData() {
+            // Simulate loading dashboard data
+            // In a real application, this would fetch data from the server
+            setTimeout(() => {
+                document.getElementById('totalOrders').textContent = '24';
+                document.getElementById('newOrders').textContent = '5';
+                document.getElementById('completedOrders').textContent = '18';
+                
+                document.getElementById('recentOrders').innerHTML = `
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Cake Type</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>Rainbow Delight</td>
+                                <td>2025-06-20</td>
+                                <td><span class="status-new">New</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mike Chen</td>
+                                <td>Chocolate Overload</td>
+                                <td>2025-06-19</td>
+                                <td><span class="status-in_progress">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>Emily Davis</td>
+                                <td>Ribbon Romance</td>
+                                <td>2025-06-18</td>
+                                <td><span class="status-completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            }, 500);
+        }
+        
+        function loadOrdersData() {
+            // Simulate loading orders data
+            setTimeout(() => {
+                document.getElementById('ordersTable').innerHTML = `
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Cake Type</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sarah Johnson</td>
+                                <td>sarah@email.com</td>
+                                <td>(555) 123-4567</td>
+                                <td>Rainbow Delight</td>
+                                <td>2025-06-20</td>
+                                <td><span class="status-new">New</span></td>
+                                <td>
+                                    <button class="action-btn" onclick="updateOrderStatus(1, 'in_progress')">Start</button>
+                                    <button class="action-btn" onclick="viewOrderDetails(1)">View</button>
+                                    <button class="action-btn delete" onclick="deleteOrder(1)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mike Chen</td>
+                                <td>mike@email.com</td>
+                                <td>(555) 987-6543</td>
+                                <td>Chocolate Overload</td>
+                                <td>2025-06-19</td>
+                                <td><span class="status-in_progress">In Progress</span></td>
+                                <td>
+                                    <button class="action-btn" onclick="updateOrderStatus(2, 'completed')">Complete</button>
+                                    <button class="action-btn" onclick="viewOrderDetails(2)">View</button>
+                                    <button class="action-btn delete" onclick="deleteOrder(2)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            }, 500);
+        }
+        
+        function loadCakesData() {
+            // Simulate loading cakes data
+            setTimeout(() => {
+                document.getElementById('cakesTable').innerHTML = `
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Flavor</th>
+                                <th>Prices</th>
+                                <th>Featured</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rainbow Delight</td>
+                                <td>Birthday Cakes</td>
+                                <td>Vanilla with rainbow layers</td>
+                                <td>$25 / $35 / $50</td>
+                                <td>Yes</td>
+                                <td>
+                                    <button class="action-btn" onclick="editCake(1)">Edit</button>
+                                    <button class="action-btn delete" onclick="deleteCake(1)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Chocolate Overload</td>
+                                <td>Birthday Cakes</td>
+                                <td>Double chocolate</td>
+                                <td>$30 / $40 / $55</td>
+                                <td>Yes</td>
+                                <td>
+                                    <button class="action-btn" onclick="editCake(2)">Edit</button>
+                                    <button class="action-btn delete" onclick="deleteCake(2)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            }, 500);
+        }
+        
+        function updateOrderStatus(orderId, status) {
+            alert(`Order ${orderId} status updated to: ${status}`);
+            loadOrdersData(); // Reload the orders table
+        }
+        
+        function viewOrderDetails(orderId) {
+            alert(`Viewing details for order ${orderId}`);
+        }
+        
+        function deleteOrder(orderId) {
+            if (confirm('Are you sure you want to delete this order?')) {
+                alert(`Order ${orderId} deleted`);
+                loadOrdersData(); // Reload the orders table
+            }
+        }
+        
+        function editCake(cakeId) {
+            alert(`Editing cake ${cakeId}`);
+        }
+        
+        function deleteCake(cakeId) {
+            if (confirm('Are you sure you want to delete this cake?')) {
+                alert(`Cake ${cakeId} deleted`);
+                loadCakesData(); // Reload the cakes table
+            }
+        }
+        
+        // Initialize dashboard on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+        });
+        
+        // Handle cake form submission
+        document.getElementById('cakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('New cake added successfully!');
+            hideAddCakeForm();
+            loadCakesData();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Poofy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">🎂 Poofy</h1>
+            <p class="tagline">Handmade with love – Freshly baked cakes from Poofy</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Our Cakes</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="order.html" class="active">Order Now</a></li>
+                    <li><a href="about.html">About Poofy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Order Your Perfect Cake</h1>
+            <p>Tell us about your dream cake and we'll make it a delicious reality</p>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-form">
+        <div class="container">
+            <div class="form-container">
+                <h2>Cake Order Form</h2>
+                <p>Fill out the form below and we'll get back to you within 24 hours with a quote and availability.</p>
+                
+                <form id="orderForm" action="php/process_order.php" method="POST">
+                    <div class="form-group">
+                        <label for="customerName">Your Name *</label>
+                        <input type="text" id="customerName" name="customer_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cakeType">What type of cake would you like? *</label>
+                        <select id="cakeType" name="cake_type" required>
+                            <option value="">Select a cake type</option>
+                            <option value="Rainbow Delight">Rainbow Delight - Birthday Cake</option>
+                            <option value="Chocolate Overload">Chocolate Overload - Birthday/Chocolate Cake</option>
+                            <option value="Ribbon Romance">Ribbon Romance - Anniversary Cake</option>
+                            <option value="Dark Temptation">Dark Temptation - Chocolate Cake</option>
+                            <option value="Vanilla Dream Cupcakes">Vanilla Dream Cupcakes</option>
+                            <option value="Mini Celebration">Mini Celebration - Mini Cake</option>
+                            <option value="Custom Design">Custom Design - Tell us your vision!</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cakeSize">Cake Size</label>
+                        <select id="cakeSize" name="cake_size">
+                            <option value="">Select size</option>
+                            <option value="4 inch">4 inch (serves 2-4)</option>
+                            <option value="6 inch">6 inch (serves 6-8)</option>
+                            <option value="8 inch">8 inch (serves 12-15)</option>
+                            <option value="10 inch">10 inch (serves 20-25)</option>
+                            <option value="12 inch">12 inch (serves 30-35)</option>
+                            <option value="12 pack cupcakes">12 pack cupcakes</option>
+                            <option value="24 pack cupcakes">24 pack cupcakes</option>
+                            <option value="36 pack cupcakes">36 pack cupcakes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Delivery/Pickup Date *</label>
+                        <input type="date" id="preferredDate" name="preferred_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occasion">What's the occasion?</label>
+                        <select id="occasion" name="occasion">
+                            <option value="">Select occasion</option>
+                            <option value="Birthday">Birthday</option>
+                            <option value="Anniversary">Anniversary</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Baby Shower">Baby Shower</option>
+                            <option value="Graduation">Graduation</option>
+                            <option value="Corporate Event">Corporate Event</option>
+                            <option value="Holiday">Holiday</option>
+                            <option value="Just Because">Just Because</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests or Custom Design Details</label>
+                        <textarea id="specialRequests" name="message" placeholder="Tell us about any special decorations, colors, themes, dietary restrictions, or custom design ideas you have in mind..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deliveryMethod">Delivery Method</label>
+                        <select id="deliveryMethod" name="delivery_method">
+                            <option value="pickup">Pickup (Preferred)</option>
+                            <option value="delivery">Local Delivery (+$10)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Submit Order Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Options -->
+    <section class="quick-contact">
+        <div class="container">
+            <h2>Prefer to Order Directly?</h2>
+            <div class="contact-options">
+                <div class="contact-option">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Quick and easy ordering</p>
+                    <a href="https://wa.me/15551234567" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Message Us
+                    </a>
+                </div>
+                <div class="contact-option">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>See our latest creations</p>
+                    <a href="#" class="btn btn-outline">@PoofyCakes</a>
+                </div>
+                <div class="contact-option">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with us</p>
+                    <a href="tel:+15551234567" class="btn btn-outline">+1 (555) 123-4567</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Information -->
+    <section class="order-info">
+        <div class="container">
+            <h2>Order Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Order Timeline</h3>
+                    <p>Please place orders at least 48 hours in advance. Custom cakes may require 3-5 days.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Payment</h3>
+                    <p>We accept cash, credit cards, and digital payments. 50% deposit required for custom orders.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-truck"></i>
+                    <h3>Delivery</h3>
+                    <p>Free pickup available. Local delivery within 10 miles for $10. Delivery times: 10am-6pm.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>Freshness Guarantee</h3>
+                    <p>All cakes are baked fresh to order. Best enjoyed within 2-3 days of pickup/delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎂 Poofy</h3>
+                    <p>Handmade cakes with love</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="menu.html">Our Cakes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> hello@poofy.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Your City, State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Poofy. All rights reserved. Made with 💕</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
